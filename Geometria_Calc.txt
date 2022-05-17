@@ -1,0 +1,182 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define pi 3.14
+int main(void)
+{
+    int opcaoinicial, opcaosecundaria, doisD, tresD, flag = 0, retangular_ou_quadrado, cubo_ou_paralelepipedo;
+    float lado1 = 0, lado2 = 0, lado3 = 0, area = 0, volume = 0, raio = 0, base = 0, largura = 0, altura = 0, diagonalmaior = 0, diagonalmenor = 0, area_da_base = 0;
+
+    while (flag == 0)
+    {
+        printf("\nPrograma de Calculo de figuras geometricas \nPara figura 2D digite 0, para figura 3D digite 1 e 2 para sair:\n");
+        scanf("%d", &opcaoinicial);
+        switch (opcaoinicial)
+        {
+        case 0:
+            printf("\n---2D---\n");
+            printf("1 - Quadrado/Retangulo \n2 -  Circunferencia\n3 - Triangulo\n4 - Losango\n5 - Paralelogramo\n6 - Voltar ao inicio:\n");
+            scanf("%d", &doisD);
+            switch (doisD)
+            {
+            case 1:
+                printf("Insira a medida do lado 1:");
+                scanf("\n%f", &lado1);
+                printf("Insira a medida do lado 2:");
+                scanf("%f", &lado2);
+                area = lado1 * lado2;
+                if (lado1 == lado2)
+                {
+                    printf("A figura que vc quer calcular e um quadrado e tem a area de: %.2f", area);
+                }
+                else if (lado1 > lado2 || lado2 > lado1)
+                {
+                    printf("A figura que vc quer calcular e um retangulo e tem a area de: %.2f", area);
+                }
+                break;
+
+            case 2:
+                printf("Insira o raio:");
+                scanf("%f", &raio);
+                area = pi * pow(raio, 2);
+                printf("A area da circunferencia e igual a: %.2f", area);
+                break;
+
+            case 3:
+                printf("Insira a base:");
+                scanf("%f", &base);
+                printf("Insira a altura:");
+                scanf("%f", &altura);
+                area = (base * altura) / 2;
+                printf("A area do triangulo e igual a: %.2f", area);
+                break;
+
+            case 4:
+                printf("Insira a diagonal maior:");
+                scanf("%f", &diagonalmaior);
+                printf("Insira a diagonal menor:");
+                scanf("%f", &diagonalmenor);
+                area = (diagonalmaior * diagonalmenor) / 2;
+                printf("A area do losango e igual a: %.2f", area);
+                break;
+
+            case 5:
+                printf("Insira a base:");
+                scanf("%f", &base);
+                printf("Insira a altura:");
+                scanf("%f", &altura);
+                area = base * altura;
+                printf("A area do paralelogramo e igual a: %.2f", area);
+                break;
+
+            case 6:
+                continue;
+                break;
+
+            default:
+                printf("Opcao invalida!");
+                break;
+            }
+            break;
+
+        case 1:
+            printf("\n---3D---\n");
+            printf("1 - Esfera\n2 - Cilindro\n3 - Piramide\n4 - Cone\n5 - Cubo/Paralelepipedo\n6 - voltar ao inicio:\n");
+            scanf("%d", &opcaosecundaria);
+            switch (opcaosecundaria)
+            {
+            case 1:
+                printf("Insira o raio:");
+                scanf("%f", &raio);
+                volume = 4 / 3 * pi * pow(raio, 3);
+                printf("A esfera tem volume de: %.2f", volume);
+                break;
+            case 2:
+                printf("Insira o raio:");
+                scanf("%f", &raio);
+                printf("Insira a altura:");
+                scanf("%f", &altura);
+                volume = pi * pow(raio, 2) * altura;
+                printf("O cilindro tem volume de: %.2f", volume);
+                break;
+            case 3:
+                printf("A base dessa piramide e quadrada ou retangular? Digite 0 para quadrada e 1 para retangular:");
+                scanf("%d", &retangular_ou_quadrado);
+                if (retangular_ou_quadrado == 0)
+                {
+                    printf("Insira a o lado 1:");
+                    scanf("%f", &lado1);
+                    printf("Insira a o lado 2:");
+                    scanf("%f", &lado2);
+                    area_da_base = lado1 * lado2;
+                    printf("Insira a altura:");
+                    scanf("%f", &altura);
+                    volume = (area_da_base * altura) / 3;
+                    printf("O volume dessa piramide e igual a: %.2f", volume);
+                }
+                else if (retangular_ou_quadrado == 1)
+                {
+                    printf("Insira a base:");
+                    scanf("%f", &base);
+                    printf("Insira a altura:");
+                    scanf("%f", &altura);
+                    area_da_base = base * altura;
+                    volume = (area_da_base * altura) / 3;
+                    printf("O volume dessa piramide e igual a: %.2f", volume);
+                }
+                break;
+            case 4:
+                printf("Insira o raio:");
+                scanf("%f", &raio);
+                printf("Insira a altura:");
+                scanf("%f", &altura);
+                volume = (pi * pow(raio, 2) * altura) / 3;
+                printf("O volume desse cone e igual a: %.2f", volume);
+                break;
+            case 5:
+                printf("Voce quer calcular um cubo ou um paralelepipedo? Digite 0 para cubo e 1 para paralelepipedo:");
+                scanf("%d", &cubo_ou_paralelepipedo);
+                if (cubo_ou_paralelepipedo == 0)
+                {
+                    printf("Insira a o lado 1:");
+                    scanf("%f", &lado1);
+                    printf("Insira a o lado 2:");
+                    scanf("%f", &lado2);
+                    printf("Insira a o lado 3:");
+                    scanf("%f", &lado3);
+                    volume = lado1 * lado2 * lado3;
+                    printf("O volume desse cubo e igual a: %.2f", volume);
+                }
+                else if (cubo_ou_paralelepipedo == 1)
+                {
+                    printf("Insira a base:");
+                    scanf("%f", &base);
+                    printf("Insira a largura:");
+                    scanf("%f", &largura);
+                    printf("Insira a altura:");
+                    scanf("%f", &altura);
+                    volume = base * altura * largura;
+                    printf("O volume desse paralelepipedo e igual a: %.2f", volume);
+                }
+                break;
+            case 6:
+                continue;
+                break;
+
+            default:
+                printf("Opcao invalida!");
+                break;
+            }
+
+            break;
+        case 2:
+            printf("Voce saiu do programa");
+            flag = 1;
+            break;
+
+        default:
+            printf("Opcao invalida!");
+            break;
+        }
+    }
+}
